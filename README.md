@@ -1,1 +1,1 @@
-# Rental
+# Microblog using Python and Flask
