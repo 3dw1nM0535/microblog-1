@@ -9,7 +9,8 @@ from werkzeug.urls import url_parse
 from app.models import User, Post
 from app.forms import LoginForm
 from datetime import datetime
-from app.forms import EditProfileForm, PostForm
+from app.forms import EditProfileForm, PostForm, ResetPasswordEmailForm, ResetPasswordForm
+from app.email import send_password_reset_email
 
 @app.before_request
 def before_request():
@@ -140,6 +141,34 @@ def explore():
     next_url=url_for('explore', page=posts.next_num) if posts.has_next else None
     prev_url=url_for('explore', page=posts.prev_num) if posts.has_prev else None
     return render_template('index.html', title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)
+
+@app.route('/reset_password_request', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form=ResetPasswordEmailForm()
+    if form.validate_on_submit():
+        user=User.query.filter_by(email=form.email.data).first()
+        if user:
+            send_password_reset_email(user)
+        flash('Check your email for instructions to reset your password')
+        return redirect(url_for('login'))
+    return render_template('reset_password_request.html', form=form, title='Reset Password')
+
+@app.route('/reset_password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user=User.verify_reset_password_token(token)
+    if not user:
+        return redirect(url_for('index'))
+    form=ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+        flash('Your password has been reset')
+        return redirect(url_for('login'))
+    return render_template('reset_password.html', form=form)
 
 @app.route('/logout')
 def logout():
