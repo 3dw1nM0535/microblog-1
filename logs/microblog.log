@@ -89,3 +89,6 @@ TemplateSyntaxError: expected token 'end of statement block', got '%'
 2019-07-10 16:56:36,911 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
 2019-07-10 16:57:02,089 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
 2019-07-11 09:16:39,804 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
+2019-07-11 09:17:13,953 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
+2019-07-11 09:17:28,561 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
+2019-07-12 17:44:46,064 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
