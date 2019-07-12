@@ -1,11 +1,12 @@
-from flask import render_template, flash, redirect, url_for, jsonify, current_app
+from flask import render_template, flash, redirect, url_for, jsonify, current_app, request
 from flask_login import login_required, current_user
 from app.models import User, Post
-from app.main.forms import EditProfileForm, PostForm
+from app.microblog.forms import EditProfileForm, PostForm
 from datetime import datetime
-from app.main.forms import EditProfileForm, PostForm
+from app.microblog.forms import EditProfileForm, PostForm
 from app.models import User, Post
-from app.main import BP
+from app.microblog import BP
+from app import db
 
 @BP.before_app_request
 def before_request():
@@ -27,12 +28,12 @@ def index():
     page=request.args.get('page', 1, type=int)
     posts=current_user.followed_posts().paginate(
         page,
-        app.config['POSTS_PER_PAGE'],
+        current_app.config['POSTS_PER_PAGE'],
         False
     )
     next_url=url_for('microblog.index', page=posts.next_num) if posts.has_next else None
     prev_url=url_for('microblog.index', page=posts.prev_num) if posts.has_prev else None
-    return render_template('main/index.html', title="Home Page", form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title="Home Page", form=form, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 @BP.route('/user/<username>')
 @login_required
@@ -46,7 +47,7 @@ def user(username):
     )
     next_url=url_for('microblog.user', username=user.username, page=posts.next_num) if posts.has_next else None
     prev_url=url_for('microblog.user', username=user.username, page=posts.prev_num) if posts.has_prev else None
-    return render_template('main/user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('user.html', user=user, posts=posts.items, next_url=next_url, prev_url=prev_url)
 
 @BP.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
@@ -61,7 +62,7 @@ def edit_profile():
     elif request.method == 'GET':
         form.username.data=current_user.username
         form.about_me.data=current_user.about_me
-    return render_template('main/edit_profile.html', title='Edit Profile', form=form)
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
 
 @BP.route('/follow/<username>')
 @login_required
@@ -104,4 +105,4 @@ def explore():
     )
     next_url=url_for('microblog.explore', page=posts.next_num) if posts.has_next else None
     prev_url=url_for('microblog.explore', page=posts.prev_num) if posts.has_prev else None
-    return render_template('main/index.html', title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)
+    return render_template('index.html', title='Explore', posts=posts.items, next_url=next_url, prev_url=prev_url)

@@ -39,7 +39,7 @@ def create_app(config_class=Config):
     from app.auth import BP as authentication_blueprint
     app.register_blueprint(authentication_blueprint, url_prefix='/auth')
 
-    from app.main import BP as microblog_blueprint
+    from app.microblog import BP as microblog_blueprint
     app.register_blueprint(microblog_blueprint)
 
     if not app.debug and not app.testing:
