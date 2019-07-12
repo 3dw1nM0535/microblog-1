@@ -1,4 +1,4 @@
-2019-07-08 23:09:57,861 ERROR: Exception on /index [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+2019-07-12 20:02:21,742 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,52 +10,8 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
-    return func(*args, **kwargs)
-  File "/home/lomolo/Projects/microblog/app/routes.py", line 36, in index
-    False
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_sqlalchemy/__init__.py", line 496, in paginate
-    items = self.limit(per_page).offset((page - 1) * per_page).all()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 3168, in all
-    return list(self)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 3320, in __iter__
-    context = self._compile_context()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 3876, in _compile_context
-    context.statement = self._simple_statement(context)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/orm/query.py", line 3969, in _simple_statement
-    **self._select_args
-  File "<string>", line 2, in select
-  File "<string>", line 2, in __init__
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/util/deprecations.py", line 130, in warned
-    return fn(*args, **kwargs)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/sql/selectable.py", line 2961, in __init__
-    GenerativeSelect.__init__(self, **kwargs)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/sql/selectable.py", line 2152, in __init__
-    self._offset_clause = _offset_or_limit_clause(offset)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/sql/selectable.py", line 95, in _offset_or_limit_clause
-    value = util.asint(element)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/sqlalchemy/util/langhelpers.py", line 1116, in asint
-    return int(value)
-ValueError: invalid literal for int() with base 10: ''
-2019-07-08 23:11:46,037 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:51]
-2019-07-08 23:12:31,741 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:51]
-2019-07-08 23:23:04,443 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:51]
-2019-07-08 23:38:01,205 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 00:16:14,523 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 00:16:18,457 ERROR: Exception on /login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/app/routes.py", line 71, in login
-    return render_template('login.html', title='Sign In', form=form)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
+    return render_template('auth/login.html', title='Sign In', form=form)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
     ctx.app,
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
@@ -64,39 +20,102 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/app/templates/base.html", line 9, in template
-    {% endblock %
-TemplateSyntaxError: expected token 'end of statement block', got '%'
-2019-07-09 00:16:49,382 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 00:19:59,306 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:48:55,510 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:49:41,205 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:51:37,484 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:51:45,433 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:52:03,004 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 17:52:08,434 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 23:34:07,704 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 23:35:42,797 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 23:36:18,388 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 23:46:33,084 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-09 23:46:41,603 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 00:09:00,975 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 00:09:13,089 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 14:19:11,338 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 14:19:22,157 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 14:19:43,107 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:53]
-2019-07-10 15:01:53,857 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-10 16:56:36,911 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-10 16:57:02,089 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-11 09:16:39,804 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-11 09:17:13,953 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-11 09:17:28,561 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-12 17:44:46,064 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-12 17:45:29,113 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:55]
-2019-07-12 19:56:37,307 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 19:57:29,451 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 19:57:29,451 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 19:59:54,306 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 20:00:51,593 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 20:00:51,593 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 20:02:21,487 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 60, in get_source
+    return self._get_source_fast(environment, template)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 89, in _get_source_fast
+    raise TemplateNotFound(template)
+TemplateNotFound: base.html
+2019-07-12 20:11:02,658 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-12 20:11:05,991 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
+    return render_template('auth/login.html', title='Sign In', form=form)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 21, in block "navbar"
+    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?
+2019-07-12 20:12:22,364 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-12 20:12:25,622 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
+    return render_template('auth/login.html', title='Sign In', form=form)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 2, in top-level template code
+    {% import 'bootstrap/wtf.html' as wtf %}
+  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 1, in top-level template code
+    {% extends "bootstrap/base.html" %}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
+    {% block doc -%}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
+    {%- block html %}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
+    {% block body -%}
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
+    {% block navbar %}
+  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 21, in block "navbar"
+    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?

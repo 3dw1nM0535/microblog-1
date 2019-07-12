@@ -1,4 +1,4 @@
-2019-07-12 23:56:31,648 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+2019-07-13 00:02:27,764 ERROR: Exception on / [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,84 +10,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
-    return render_template('auth/login.html', title='Sign In', form=form)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/lomolo/Projects/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/home/lomolo/Projects/microblog/app/templates/base.html", line 21, in block "navbar"
-    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
-    raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?
-2019-07-12 23:56:38,125 ERROR: Exception on /favicon.ico [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
-Traceback (most recent call last):
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1815, in handle_user_exception
-    return self.handle_http_exception(e)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1743, in handle_http_exception
-    return handler(e)
-  File "/home/lomolo/Projects/microblog/app/errors/handlers.py", line 7, in not_found_error
-    return render_template('errors/404.html'), 404
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
-    ctx.app,
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
-    return self.environment.handle_exception(exc_info, True)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
-    reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/app/templates/errors/404.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/home/lomolo/Projects/microblog/app/templates/base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/home/lomolo/Projects/microblog/app/templates/base.html", line 21, in block "navbar"
-    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
-    return appctx.app.handle_url_build_error(error, endpoint, values)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
-    reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
-    endpoint, values, method=method, force_external=external
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
-    raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?
-2019-07-12 23:58:44,917 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 23:58:56,313 ERROR: Exception on /auth/login [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/lomolo/Projects/microblog/app/microblog/routes.py", line 28, in index
+    page=request.args.get('page', 1, type=int)
+NameError: global name 'request' is not defined
+2019-07-13 00:02:51,396 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:02:53,385 ERROR: Exception on / [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -99,11 +28,13 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 18, in login
-    if user is None or not user.check_password(form.password.data):
-AttributeError: 'User' object has no attribute 'check_password'
-2019-07-13 00:00:07,273 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-13 00:00:13,661 ERROR: Exception on / [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_login/utils.py", line 261, in decorated_view
+    return func(*args, **kwargs)
+  File "/home/lomolo/Projects/microblog/app/microblog/routes.py", line 31, in index
+    app.config['POSTS_PER_PAGE'],
+NameError: global name 'app' is not defined
+2019-07-13 00:03:44,810 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:04:48,458 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -111,11 +42,67 @@ Traceback (most recent call last):
     rv = self.handle_user_exception(e)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1947, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2241, in preprocess_request
-    rv = func()
-  File "/home/lomolo/Projects/microblog/app/microblog/routes.py", line 14, in before_request
-    db.session.commit()
-NameError: global name 'db' is not defined
-2019-07-13 00:02:23,423 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/app/templates/email/reset_password.html", line 7, in top-level template code
+    <p>{{ url_for('reset_password', token=token, _external=True) }}</p>
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2019-07-13 00:08:41,396 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:08:44,198 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
+    ctx.app,
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 1008, in render
+    return self.environment.handle_exception(exc_info, True)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/app/templates/email/reset_password.html", line 7, in top-level template code
+    <p>{{ url_for('reset_password', token=token, _external=True) }}</p>
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
+    return appctx.app.handle_url_build_error(error, endpoint, values)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 358, in url_for
+    endpoint, values, method=method, force_external=external
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
+    raise BuildError(endpoint, values, method, self)
+BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2019-07-13 00:19:01,580 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
