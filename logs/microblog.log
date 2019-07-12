@@ -1,4 +1,4 @@
-2019-07-12 20:15:59,742 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+2019-07-13 00:19:11,490 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -10,8 +10,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
-    return render_template('auth/login.html', title='Sign In', form=form)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
     ctx.app,
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
@@ -20,20 +22,8 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 21, in block "navbar"
-    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+  File "/home/lomolo/Projects/microblog/app/templates/email/reset_password.html", line 7, in top-level template code
+    <p>{{ url_for('reset_password', token=token, _external=True) }}</p>
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
@@ -42,9 +32,9 @@ Traceback (most recent call last):
     endpoint, values, method=method, force_external=external
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
     raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?
-2019-07-12 20:22:04,457 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
-2019-07-12 20:22:08,827 ERROR: Exception on /auth/login [GET] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2019-07-13 00:19:36,366 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:19:39,945 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
 Traceback (most recent call last):
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -56,8 +46,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 26, in login
-    return render_template('auth/login.html', title='Sign In', form=form)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 140, in render_template
     ctx.app,
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/templating.py", line 120, in _render
@@ -66,20 +58,8 @@ Traceback (most recent call last):
     return self.environment.handle_exception(exc_info, True)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/jinja2/environment.py", line 780, in handle_exception
     reraise(exc_type, exc_value, tb)
-  File "/home/lomolo/Projects/microblog/app/templates/auth/login.html", line 2, in top-level template code
-    {% import 'bootstrap/wtf.html' as wtf %}
-  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 1, in top-level template code
-    {% extends "bootstrap/base.html" %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 4, in block "doc"
-    {%- block html %}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 20, in block "html"
-    {% block body -%}
-  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 21, in block "body"
-    {% block navbar %}
-  File "/home/lomolo/Projects/microblog/app/templates/main/base.html", line 21, in block "navbar"
-    <a class="navbar-brand" href="{{ url_for('index') }}">Microblog</a>
+  File "/home/lomolo/Projects/microblog/app/templates/email/reset_password.html", line 7, in top-level template code
+    <p>{{ url_for('reset_password', token=token, _external=True) }}</p>
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/helpers.py", line 370, in url_for
     return appctx.app.handle_url_build_error(error, endpoint, values)
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2215, in handle_url_build_error
@@ -88,4 +68,50 @@ Traceback (most recent call last):
     endpoint, values, method=method, force_external=external
   File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/routing.py", line 2007, in build
     raise BuildError(endpoint, values, method, self)
-BuildError: Could not build url for endpoint 'index'. Did you mean 'microblog.index' instead?
+BuildError: Could not build url for endpoint 'reset_password' with values ['token']. Did you mean 'auth.reset_password' instead?
+2019-07-13 00:20:54,197 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:21:01,869 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
+  File "/home/lomolo/Projects/microblog/app/email.py", line 14, in send_mail
+    Thread(target=send_async_email, args=(current_app.get_current_object(), msg)).start()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Flask' object has no attribute 'get_current_object'
+2019-07-13 00:30:15,941 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:30:21,217 ERROR: Exception on /auth/reset_password_request [POST] [in /home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py:1891]
+Traceback (most recent call last):
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/home/lomolo/Projects/microblog/app/auth/routes.py", line 59, in reset_password_request
+    send_password_reset_email(user)
+  File "/home/lomolo/Projects/microblog/app/auth/email.py", line 10, in send_password_reset_email
+    html_body=render_template('email/reset_password.html', user=user, token=token))
+  File "/home/lomolo/Projects/microblog/app/email.py", line 14, in send_mail
+    Thread(target=send_async_email, args=(current_app.get_current_object(), msg)).start()
+  File "/home/lomolo/Projects/microblog/venv/local/lib/python2.7/site-packages/werkzeug/local.py", line 348, in __getattr__
+    return getattr(self._get_current_object(), name)
+AttributeError: 'Flask' object has no attribute 'get_current_object'
+2019-07-13 00:32:02,501 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
+2019-07-13 00:34:20,698 INFO: Microblog startup [in /home/lomolo/Projects/microblog/app/__init__.py:73]
