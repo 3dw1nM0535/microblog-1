@@ -16,3 +16,4 @@ class Config(object):
     ADMINS=['email@example.com']
     POSTS_PER_PAGE=25
     SECRET=os.environ.get('SECRET')
+    ELASTICSEARCH_URL=os.environ.get('ELASTICSEARCH_URL')

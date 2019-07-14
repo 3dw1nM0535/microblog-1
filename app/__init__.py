@@ -10,6 +10,7 @@ import os
 from flask_mail import Mail
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
+from elasticsearch import Elasticsearch
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -25,6 +26,9 @@ login.login_view='auth.login'
 def create_app(config_class=Config):
     app=Flask(__name__)
     app.config.from_object(config_class)
+
+    app.elasticsearch=Elasticsearch(app.config['ELASTICSEARCH_URL']) \
+    if app.config['ELASTICSEARCH_URL'] else None
 
     db.init_app(app)
     migrate.init_app(app, db)
